@@ -35,3 +35,47 @@ This project is a web application designed to help users manage and discover ris
 A new window should open displaying the application. This might take a moment, so please be patient. If you see a white screen initially, do not close the window immediately.
 
 ## API Endpoints
+
+### _Artists_
+
+### Get All Artists
+
+- Method: **GET**
+- URL: {{URL}}/
+- Description: This endpoint allows users to get list of all artists in the app.
+
+### Get Artist By ID
+
+- Method: **GET**
+- URL: {{URL}}/artists/:id
+- Description: This endpoint allows users to get details about one artist by ID.
+
+### Add New Artist
+
+- Method: **POST**
+- URL: {{URL}}/artists/new
+- Data:
+```javascript
+{
+    "name": "New Artist",
+    "age": 20,
+    "yearsActive": 5,
+    "genre": "Rock"
+}
+```            
+- Description: This endpoint allows users to add a new artist to the app with filled following fields: name, age, yearsActive, and genre.
+
+### Edit Artist By ID
+
+- Method: **PATCH**
+- URL: {{URL}}/artists/:id/edit
+- Data:
+```javascript
+{
+    "name": "New Artist",
+    "age": 50,
+    "yearsActive": 20,
+    "genre": "Pop"
+}
+```
+- Description: This endpoint allows users to edit the artist by changing name, age, yearsActive, or/and genre.
