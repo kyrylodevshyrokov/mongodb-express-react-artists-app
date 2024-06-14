@@ -1,21 +1,21 @@
-import _ from 'lodash';
-import faker from 'faker';
-import { MongoClient } from 'mongodb';
-import { GENRES } from './constants';
+import _ from "lodash";
+import faker from "faker";
+import { MongoClient } from "mongodb";
+import { GENRES } from "./constants";
 
 const MINIMUM_ARTISTS = 2;
 const ARTISTS_TO_ADD = 15;
 
 let artistsCollection;
 
-MongoClient.connect('mongodb://localhost:27017', {
+MongoClient.connect("mongodb://127.0.0.1:27017", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
   .then((client) => {
-    console.log('Connected successfully to server');
-    const db = client.db('upstar_music');
-    artistsCollection = db.collection('artists');
+    console.log("Connected successfully to server");
+    const db = client.db("upstar_music");
+    artistsCollection = db.collection("artists");
     return artistsCollection.countDocuments({});
   })
   .then((count) => {

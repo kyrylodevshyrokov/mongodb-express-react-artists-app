@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import ReduxThunk from 'redux-thunk';
-import { MongoClient } from 'mongodb';
-import reducers from './reducers';
-import Routes from './router';
-import mongoose from 'mongoose';
-import './seeds';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import ReduxThunk from "redux-thunk";
+import { MongoClient } from "mongodb";
+import reducers from "./reducers";
+import Routes from "./router";
+import mongoose from "mongoose";
+import "./seeds";
 
 mongoose.Promise = global.Promise;
 
@@ -21,7 +21,7 @@ const App = () => {
   );
 };
 
-const mongoUrl = 'mongodb://localhost:27017';
+const mongoUrl = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -30,24 +30,24 @@ const client = new MongoClient(mongoUrl, {
 client
   .connect()
   .then(() => {
-    console.log('Connected successfully to MongoDB using MongoClient');
-    const db = client.db('upstar_music');
+    console.log("Connected successfully to MongoDB using MongoClient");
+    const db = client.db("upstar_music");
     window.db = db;
 
-    mongoose.connect('mongodb://localhost/upstar_music', {
+    mongoose.connect("mongodb://127.0.0.1/upstar_music", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
       useCreateIndex: true,
     });
     mongoose.connection
-      .once('open', () => {
-        ReactDOM.render(<App />, document.getElementById('root'));
+      .once("open", () => {
+        ReactDOM.render(<App />, document.getElementById("root"));
       })
-      .on('error', (error) => {
-        console.warn('Warning', error);
+      .on("error", (error) => {
+        console.warn("Warning", error);
       });
   })
   .catch((error) => {
-    console.error('MongoDB connection error using MongoClient:', error);
+    console.error("MongoDB connection error using MongoClient:", error);
   });
