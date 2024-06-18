@@ -7,7 +7,7 @@ import { MongoClient } from "mongodb";
 import reducers from "./reducers";
 import Routes from "./router";
 import mongoose from "mongoose";
-import "./seeds";
+import "./utils/seeds";
 
 mongoose.Promise = global.Promise;
 

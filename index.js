@@ -1,10 +1,12 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow } = require("electron");
+const { windowSize } = require("./config");
+
 let win;
 
-app.on('ready', function () {
+app.on("ready", function () {
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: windowSize.width,
+    height: windowSize.height,
     webPreferences: { nodeIntegration: true, contextIsolation: false },
   });
 

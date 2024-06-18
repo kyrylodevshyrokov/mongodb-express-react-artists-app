@@ -1,8 +1,9 @@
 const Mongo = require("mongodb");
+const { HOST, PORT } = require("../config");
 
 const { Db, Server } = Mongo;
 
-const db = new Db("artists", new Server("127.0.0.1", 27017));
+const db = new Db("artists", new Server(HOST, PORT));
 db.open().then(() => {
   db.command({
     collMod: "artists",
